@@ -1,0 +1,40 @@
+<style>
+  #login-button:hover {
+     cursor: wait;
+  }
+</style>
+
+<div class="content" role="main" style="">
+  <div style="height: 350px;">
+    <div style="display: flex; justify-content: center;">
+      <mat-form-field style="transform: rotate(-90deg); margin-left: 45px; position: relative; top: 100px;">
+        <mat-label>Username</mat-label>
+        <input matInput id="username-input" type="password">
+      </mat-form-field>
+
+      <mat-form-field style="transform: rotate(-90deg); margin-left: 45px; position: relative; top: 100px; right: 150px;">
+        <mat-label>Password</mat-label>
+        <input matInput id="password-input" type="password" (click)="flashRed()">
+      </mat-form-field>
+    
+      <div class="form-example">
+        <button mat-raised-button id="login-button" color="warn" style="top: 210px; right: 150px; float: right; -mdc-text-button-disabled-label-text-color: rgba(0, 0, 0, 0.38);
+        --mdc-text-button-label-text-color: rgba(0, 0, 0, 0.38);" (click)="login()">Login?</button>
+        <button mat-raised-button color="success" style="top: 210px; right: 160px; float: right; background-color: #4BB543; color: white;" (click)="reset()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="content" *ngIf="isCountingDown" style="display: flex; justify-content: center;">
+    <div *ngIf="seconds > 0">
+      <p style="font-size: 24px;">You have {{ seconds }} seconds to complete your login.</p>
+    </div>
+    <div *ngIf="seconds <= 0">
+      <p style="font-size: 34px;">You failed. BOOOOOOOOOOOO.</p>
+    </div>
+  </div>
+
+  <div class="content" *ngIf="loginSuccess" style="display: flex; justify-content: center;">
+      <p style="font-size: 34px;">You did it!!!!! We didn't see that coming.....</p>
+  </div>
+</div>
